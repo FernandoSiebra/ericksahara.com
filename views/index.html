@@ -1,0 +1,82 @@
+	<section class="section-default" ng-controller="ExperiencesCtrl as experiences">
+		<h2 class="h2">Work Experience</h2>
+		<ul class="experience-list" >
+			<li class="experience-list-item" ng-repeat="experience in experiences">
+				<div class="experience-list-item-circle" aria-label="period">{{experience.period}}</div>
+				<div class="experience-list-item-content">
+					<h4 class="h4 text-primary">{{experience.title}}</h4>
+					<p>{{experience.subtitle}}</p>
+					<p class="text-secondary" ng-bind-html="experience.description | toHTML"></p>
+					<p class="text-secondary experience-list-item-print hide">{{experience.period}}</p>
+				</div>
+			</li>
+
+		</ul>
+	</section>
+
+	<section class="section-primary" ng-controller="SkillsCtrl as skills">
+		<h2 class="h2 text-inverse">Process and skills</h2>
+		<div class="skills">
+			<h5 class="skills-title">Discovery and Research</h5>
+			<div class="row row-fluid row-skills">
+				<div class="skills-item columns large-4 left" ng-repeat="skill in skills | filter:{category: 'discovery'} | orderBy: '-levelBar'">
+					<p class="skills-item-title">{{skill.title}}</p>
+					<div class="skills-item-bar" aria-label="{{skill.level}}">
+						<div class="bar" ng-style="{width: skill.levelBar + '%'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skills">
+			<h5 class="skills-title">Design</h5>
+			<div class="row row-fluid row-skills">
+				<div class="skills-item columns large-4 left" ng-repeat="skill in skills | filter:{category: 'design'} | orderBy: '-levelBar'">
+					<p class="skills-item-title">{{skill.title}}</p>
+					<div class="skills-item-bar" aria-label="{{skill.level}}">
+						<div class="bar" ng-style="{width: skill.levelBar + '%'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skills">
+			<h5 class="skills-title">Development</h5>
+			<div class="row row-fluid row-skills">
+				<div class="skills-item columns large-4 left" ng-repeat="skill in skills | filter:{category: 'dev'} | orderBy: '-levelBar'">
+					<p class="skills-item-title">{{skill.title}}</p>
+					<div class="skills-item-bar" aria-label="{{skill.level}}">
+						<div class="bar" ng-style="{width: skill.levelBar + '%'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="skills">
+			<h5 class="skills-title">Test and validation</h5>
+			<div class="row row-fluid row-skills">
+				<div class="skills-item columns large-4 left" ng-repeat="skill in skills | filter:{category: 'test'} | orderBy: '-levelBar'">
+					<p class="skills-item-title">{{skill.title}}</p>
+					<div class="skills-item-bar" aria-label="{{skill.level}}">
+						<div class="bar" ng-style="{width: skill.levelBar + '%'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-default" ng-controller="EducationCtrl as education">
+		<h2 class="h2">Education</h2>
+		<ul class="degree-list">
+			<li class="degree-list-item" ng-repeat="educationItems in education">
+				<h4 class="h4 text-primary">{{educationItems.title}}</h4>
+				<p>{{educationItems.subtitle}}</p>
+				<p class="text-secondary" ng-bind-html="educationItems.description | toHTML" ></p>
+			</li>
+		</ul>
+	</section>
+
+	<section class="section-secondary" ng-controller="LanguagesCtrl as languages">
+		<h2 class="h2">Languages</h2>
+		<dl class="language-dl" ng-repeat="language in languages">
+			<dt>{{language.name}}</dt>
+			<dd>{{language.level}}</dd>
+		</dl>
+	</section>
